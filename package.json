@@ -1,12 +1,10 @@
 {
   "name": "lirawx-npm-test",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "",
   "main": "index.js",
   "repository": "https://github.com/lirawx/npm-test.git",
-  "keywords": [
-    "helloworld"
-  ],
+  "keywords": [],
   "files": [
     "lib",
     "README.md"
@@ -14,7 +12,6 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": [],
   "author": "lirawx <lira_wx@outlook.com>",
   "license": "MIT"
 }
