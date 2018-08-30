@@ -4,7 +4,10 @@
   "description": "",
   "main": "index.js",
   "repository": "https://github.com/lirawx/npm-test.git",
-  "keywords": [],
+  "keywords": [
+    "hello",
+    "test"
+  ],
   "files": [
     "lib",
     "README.md"
