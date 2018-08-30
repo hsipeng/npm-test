@@ -3,8 +3,13 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "repository": "https://github.com/lirawx/npm-test.git",
+  "keyworlds": [
+    "helloworld"
+  ],
   "files": [
-    "lib"
+    "lib",
+    "README.md"
   ],
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
