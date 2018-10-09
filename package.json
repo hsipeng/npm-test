@@ -13,11 +13,12 @@
     "README.md"
   ],
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "cross-env NODE_ENV=development webpack-serve --open",
     "clear": "rimraf lib",
     "build": "cross-env NODE_ENV=production babel src --copy-files --extensions .js,.jsx --out-dir lib",
-    "prepublish": "npm-run-all clear build"
+    "prepublish": "npm-run-all clear build",
+    "test": "cross-env NODE_ENV=test jest --env=jsdom --notify --watchman=false",
+    "coverage": "cross-env NODE_ENV=test jest --env=jsdom -u --coverage"
   },
   "author": "lirawx <lira_wx@outlook.com>",
   "license": "MIT",
@@ -41,6 +42,7 @@
     "@babel/preset-stage-0": "^7.0.0",
     "autoprefixer": "^9.1.5",
     "babel-core": "^7.0.0-bridge.0",
+    "babel-jest": "^23.6.0",
     "babel-loader": "^8.0.2",
     "babel-plugin-module-resolver": "^3.1.1",
     "babel-preset-env": "^1.7.0",
@@ -51,10 +53,13 @@
     "cross-env": "^5.2.0",
     "css-loader": "^1.0.0",
     "cssnano": "^4.1.0",
+    "enzyme": "^3.7.0",
+    "enzyme-adapter-react-16": "^1.6.0",
     "file-loader": "^2.0.0",
     "html-webpack-plugin": "^3.2.0",
     "http-proxy-middleware": "^0.19.0",
     "internal-ip": "^3.0.1",
+    "jest": "^23.6.0",
     "koa-connect": "^2.0.1",
     "koa-router": "^7.4.0",
     "less": "^3.8.1",
@@ -69,5 +74,44 @@
     "webpack-cli": "^3.1.0",
     "webpack-serve": "^2.0.2",
     "webpack-serve-waitpage": "^1.0.2"
-  }
+  },
+    "jest": {
+      "verbose": true,
+      "collectCoverageFrom": [
+        "src/**/*.{js,jsx}"
+      ],
+      "setupFiles": [
+      ],
+      "setupTestFrameworkScriptFile": "<rootDir>/setupTests.js",
+      "testMatch": [
+        "<rootDir>/__tests__/**/*.js?(x)"
+      ],
+      "testEnvironment": "node",
+      "testURL": "http://localhost",
+      "transform": {
+        "^.+\\.(js|jsx)$": "<rootDir>/node_modules/babel-jest",
+        "^.+\\.(css|less)$": "<rootDir>/__mocks__/styleMock.js"
+      },
+      "transformIgnorePatterns": [
+        "[/\\\\]node_modules[/\\\\].+\\.(js|jsx)$"
+      ],
+      "moduleNameMapper": {
+        "^react-native$": "react-native-web"
+      },
+      "moduleFileExtensions": [
+        "js",
+        "jsx"
+      ],
+      "moduleDirectories": [
+        "node_modules"
+      ],
+      "coverageThreshold": {
+        "global": {
+          "branches": 95,
+          "functions": 95,
+          "lines": 95,
+          "statements": 95
+        }
+      }
+    }
 }
